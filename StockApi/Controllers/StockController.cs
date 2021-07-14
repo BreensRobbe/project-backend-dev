@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using StockApi.models;
+using StockApi.Models;
 using System;
 
 namespace StockApi.Controllers
@@ -13,8 +13,9 @@ namespace StockApi.Controllers
 
         public StockController(){
             _stocks = new Stock(){
-                StockId = Guid.NewGuid(), Name="Gamestop", Ticker="GME", Employees=12000
+                StockId =0 , Name="Gamestop", Ticker="GME", Employees=12000
             };
+            
         }
 
         [HttpGet]

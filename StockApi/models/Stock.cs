@@ -1,12 +1,13 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
-namespace StockApi.models
+namespace StockApi.Models
 {
     public class Stock
     {
         [Key]
-        public Guid StockId { get; set; }
+        public int StockId { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]
@@ -15,7 +16,8 @@ namespace StockApi.models
         public int Employees { get; set; }
         [Required]
         public DateTime ListDate  { get; set; }
-        //public string Exchanges { get; set; } // list
-        //public string Brokers { get; set; } // list 
+        public ICollection<Exchange> Exchanges {get; set; }
+        public ICollection<Broker> Brokers { get; set; }
+
     }
 }
