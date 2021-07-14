@@ -9,8 +9,8 @@ using StockApi.Data;
 namespace StockApi.Migrations
 {
     [DbContext(typeof(StockContext))]
-    [Migration("20210711221104_AddedSeeding")]
-    partial class AddedSeeding
+    [Migration("20210714105710_AddedJointSeeding")]
+    partial class AddedJointSeeding
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,6 +32,18 @@ namespace StockApi.Migrations
                     b.HasIndex("StocksStockId");
 
                     b.ToTable("BrokerStock");
+
+                    b.HasData(
+                        new
+                        {
+                            BrokersBrokerId = 1,
+                            StocksStockId = 1
+                        },
+                        new
+                        {
+                            BrokersBrokerId = 2,
+                            StocksStockId = 3
+                        });
                 });
 
             modelBuilder.Entity("ExchangeStock", b =>
@@ -47,6 +59,18 @@ namespace StockApi.Migrations
                     b.HasIndex("StocksStockId");
 
                     b.ToTable("ExchangeStock");
+
+                    b.HasData(
+                        new
+                        {
+                            ExchangesExchangeId = 1,
+                            StocksStockId = 1
+                        },
+                        new
+                        {
+                            ExchangesExchangeId = 2,
+                            StocksStockId = 3
+                        });
                 });
 
             modelBuilder.Entity("StockApi.Models.Broker", b =>

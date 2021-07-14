@@ -8,11 +8,13 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using AutoMapper;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using StockApi.Config;
 using StockApi.Data;
+using StockApi.Repositories;
 
 namespace StockApi
 {
@@ -29,6 +31,14 @@ namespace StockApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<ConnectionStrings>(Configuration.GetSection("ConnectionStrings"));
+
+            services.AddAutoMapper(typeof(Startup));
+
+            services.AddTransient<IStockContext, StockContext>();
+            services.AddTransient<IStockRepository, StockRepository>();
+            services.AddTransient<IBrokerRepository, BrokerRepository>();
+            services.AddTransient<IExchangeRepository, ExchangeRepository>();
+
 
             services.AddDbContext<StockContext>();
 

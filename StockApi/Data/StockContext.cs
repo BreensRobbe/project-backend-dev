@@ -30,7 +30,6 @@ namespace StockApi.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder){
             
-            
             Broker etoro = new Broker(){BrokerId=1, Name="Etoro", Country="United Kingdom", Continent="Europe"};
             Broker robinhood = new Broker(){BrokerId=2, Name="Robinhood", Country="USA", Continent="North America"};
             Broker fidelity = new Broker(){BrokerId=3, Name="Fidelity", Country="USA", Continent="North America",};
@@ -42,34 +41,6 @@ namespace StockApi.Data
             Stock gamestop = new Stock(){StockId=1, Name="Gamestop", Ticker="GME", Employees=12000, ListDate=new DateTime(2002, 2, 13)};
             Stock amc = new Stock(){StockId=2, Name="AMC Entertainment", Ticker="AMC", Employees=4408, ListDate=new DateTime(2013, 12, 18)};
             Stock bb = new Stock(){StockId=3, Name="Blackberry", Ticker="BB", Employees=4044, ListDate=new DateTime(1997, 10, 28)};
-
-            //etoro.Stocks.Add(gamestop);
-            //etoro.Stocks.Add(bb);
-            //robinhood.Stocks.Add(amc);
-            //fidelity.Stocks.Add(gamestop);
-            //fidelity.Stocks.Add(amc);
-            //fidelity.Stocks.Add(bb);
-
-            //newyorkStockExchange.Stocks.Add(gamestop);
-            //newyorkStockExchange.Stocks.Add(bb);
-            //nasdaq.Stocks.Add(amc);
-           // hongkongStockExchange.Stocks.Add(gamestop);
-            //hongkongStockExchange.Stocks.Add(amc);
-            //hongkongStockExchange.Stocks.Add(bb);
-
-           // gamestop.Brokers.Add(etoro);
-            //gamestop.Brokers.Add(fidelity);
-            //bb.Brokers.Add(etoro);
-            //bb.Brokers.Add(fidelity);
-            //amc.Brokers.Add(robinhood);
-            //amc.Brokers.Add(fidelity);
-
-           // gamestop.Exchanges.Add(newyorkStockExchange);
-           // gamestop.Exchanges.Add(hongkongStockExchange);
-           // bb.Exchanges.Add(newyorkStockExchange);
-           // bb.Exchanges.Add(hongkongStockExchange);
-            //amc.Exchanges.Add(nasdaq);
-            //amc.Exchanges.Add(hongkongStockExchange);
 
             // Data seeding: Brokers
             modelBuilder.Entity<Broker>().HasData(etoro);
@@ -87,6 +58,14 @@ namespace StockApi.Data
             modelBuilder.Entity<Stock>().HasData(gamestop);
             modelBuilder.Entity<Stock>().HasData(amc);
             modelBuilder.Entity<Stock>().HasData(bb);
+
+
+            // Data seeding: Joint tables
+            modelBuilder.Entity("BrokerStock").HasData(new {BrokersBrokerId=1, StocksStockId=1});
+            modelBuilder.Entity("BrokerStock").HasData(new {BrokersBrokerId=2, StocksStockId=3});
+
+            modelBuilder.Entity("ExchangeStock").HasData(new {ExchangesExchangeId=1, StocksStockId=1});
+            modelBuilder.Entity("ExchangeStock").HasData(new {ExchangesExchangeId=2, StocksStockId=3});
         }
     }
 }

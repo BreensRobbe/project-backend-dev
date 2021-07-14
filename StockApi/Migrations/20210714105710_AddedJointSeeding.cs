@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace StockApi.Migrations
 {
-    public partial class AddedSeeding : Migration
+    public partial class AddedJointSeeding : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -146,6 +146,24 @@ namespace StockApi.Migrations
                     { 1, 12000, new DateTime(2002, 2, 13, 0, 0, 0, 0, DateTimeKind.Unspecified), "Gamestop", "GME" },
                     { 2, 4408, new DateTime(2013, 12, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), "AMC Entertainment", "AMC" },
                     { 3, 4044, new DateTime(1997, 10, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), "Blackberry", "BB" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "BrokerStock",
+                columns: new[] { "BrokersBrokerId", "StocksStockId" },
+                values: new object[,]
+                {
+                    { 1, 1 },
+                    { 2, 3 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "ExchangeStock",
+                columns: new[] { "ExchangesExchangeId", "StocksStockId" },
+                values: new object[,]
+                {
+                    { 1, 1 },
+                    { 2, 3 }
                 });
 
             migrationBuilder.CreateIndex(

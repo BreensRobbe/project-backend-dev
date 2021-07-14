@@ -30,6 +30,18 @@ namespace StockApi.Migrations
                     b.HasIndex("StocksStockId");
 
                     b.ToTable("BrokerStock");
+
+                    b.HasData(
+                        new
+                        {
+                            BrokersBrokerId = 1,
+                            StocksStockId = 1
+                        },
+                        new
+                        {
+                            BrokersBrokerId = 2,
+                            StocksStockId = 3
+                        });
                 });
 
             modelBuilder.Entity("ExchangeStock", b =>
@@ -45,6 +57,18 @@ namespace StockApi.Migrations
                     b.HasIndex("StocksStockId");
 
                     b.ToTable("ExchangeStock");
+
+                    b.HasData(
+                        new
+                        {
+                            ExchangesExchangeId = 1,
+                            StocksStockId = 1
+                        },
+                        new
+                        {
+                            ExchangesExchangeId = 2,
+                            StocksStockId = 3
+                        });
                 });
 
             modelBuilder.Entity("StockApi.Models.Broker", b =>
