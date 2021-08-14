@@ -9,8 +9,8 @@ using StockApi.Data;
 namespace StockApi.Migrations
 {
     [DbContext(typeof(StockContext))]
-    [Migration("20210714105710_AddedJointSeeding")]
-    partial class AddedJointSeeding
+    [Migration("20210714135405_AddedSeeding")]
+    partial class AddedSeeding
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -5,25 +5,31 @@ using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Logging;
 using StockApi.Config;
 using System.Collections.Generic;
-
-
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace StockApi.Data
 {
-    public class StockContext : DbContext
+    public interface IStockContext
+    {
+        DbSet<Broker> TblBrokers { get; set; }
+        DbSet<Stock> TblStocks { get; set; }
+        DbSet<Exchange> TblExchanges { get; set; }
+
+        Task<int> SaveChangesAsync(CancellationToken cancellationToken=default);
+    }
+    public class StockContext : DbContext, IStockContext
     {
         public DbSet<Broker> TblBrokers { get; set; }
         public DbSet<Stock> TblStocks { get; set; }
         public DbSet<Exchange> TblExchanges { get; set; }
         private ConnectionStrings _connectionStrings;
+
         public StockContext(DbContextOptions<StockContext> options, IOptions<ConnectionStrings> connectionStrings) : base(options){
             _connectionStrings = connectionStrings.Value;
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options){
-
-
-
             options.UseLoggerFactory(LoggerFactory.Create(builder => builder.AddDebug()));
             options.UseMySql(_connectionStrings.SQL, ServerVersion.AutoDetect(_connectionStrings.SQL));
         }

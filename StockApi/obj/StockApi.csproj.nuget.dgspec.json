@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\code\\school\\backdev-project\\project-backend-dev\\StockApi\\StockApi.csproj": {}
+    "C:\\code\\school\\backdev-project\\project-backend-dev\\StockApi\\StockApi.csproj": {}
   },
   "projects": {
-    "c:\\code\\school\\backdev-project\\project-backend-dev\\StockApi\\StockApi.csproj": {
+    "C:\\code\\school\\backdev-project\\project-backend-dev\\StockApi\\StockApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\code\\school\\backdev-project\\project-backend-dev\\StockApi\\StockApi.csproj",
+        "projectUniqueName": "C:\\code\\school\\backdev-project\\project-backend-dev\\StockApi\\StockApi.csproj",
         "projectName": "StockApi",
-        "projectPath": "c:\\code\\school\\backdev-project\\project-backend-dev\\StockApi\\StockApi.csproj",
+        "projectPath": "C:\\code\\school\\backdev-project\\project-backend-dev\\StockApi\\StockApi.csproj",
         "packagesPath": "C:\\Users\\Robbe\\.nuget\\packages\\",
-        "outputPath": "c:\\code\\school\\backdev-project\\project-backend-dev\\StockApi\\obj\\",
+        "outputPath": "C:\\code\\school\\backdev-project\\project-backend-dev\\StockApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Robbe\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -15,6 +15,7 @@ using Microsoft.OpenApi.Models;
 using StockApi.Config;
 using StockApi.Data;
 using StockApi.Repositories;
+using StockApi.Services;
 
 namespace StockApi
 {
@@ -38,6 +39,7 @@ namespace StockApi
             services.AddTransient<IStockRepository, StockRepository>();
             services.AddTransient<IBrokerRepository, BrokerRepository>();
             services.AddTransient<IExchangeRepository, ExchangeRepository>();
+            services.AddTransient<IStockService, StockService>();
 
 
             services.AddDbContext<StockContext>();

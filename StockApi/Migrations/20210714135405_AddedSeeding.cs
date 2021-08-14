@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace StockApi.Migrations
 {
-    public partial class AddedJointSeeding : Migration
+    public partial class AddedSeeding : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
